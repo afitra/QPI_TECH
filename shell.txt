@@ -1,0 +1,1 @@
+cd mig33/inner.folder ;for old in *.txt; do mv $old `basename $old`.dat; done
