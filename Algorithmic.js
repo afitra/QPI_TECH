@@ -25,16 +25,23 @@ function viewTree(arr, inputNumber) {
 
 let getTreeFactory = function (flag, inputNumber, total, start, result, data) {
   if (flag) {
+    // untuk stoping rekursif
     getTreeFactory(false, inputNumber, 0, 1, result, data)
 
-    return viewTree(data, inputNumber)
+    return viewTree(data, inputNumber) // untuk memformat agar sesuai tampilan yang di inginkan
   } else {
     if (total == inputNumber) {
+      //jika nilai total sudah sesuai dengan input number maka akan di slice dan di masukkan ke data
       data.push(result.slice())
     }
 
     for (let i = start; i <= inputNumber; i++) {
       let temp = total + i
+      //   temp = nilai total yang diterima dari param dan di tambah nilai i dari loop ,, misal total + i -> 1 + 1 = 2 ,
+      //nilai 2 belum mencapai nilai inputNumber maka akan di kembalikan ke fungsi itu sendiri  dengan parameter total di gantikan dengan temp
+      //agar nilai 2 mendapat tambahan nilai lagi sehinggan bisa mencapai / sama dengan nilai inputNUmber
+      //jika nilai temp sudah melewati inputNumber maka itu tidak sah  misal inputNUmber 5,  temp bernilai 6
+
       if (temp <= inputNumber) {
         result.push(i)
         getTreeFactory(false, inputNumber, temp, i, result, data)
