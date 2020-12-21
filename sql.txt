@@ -1,0 +1,19 @@
+
+
+// memasukkan data ke table
+INSERT  INTO qlue.assessments (date, username , score ) 
+VALUES ('2011-3-1','a', -100),
+ ('2011-3-5','b', -100),
+  ('2011-3-6','c', -100), 
+  ('2011-3-28','d', -100),
+  ('2011-4-28','e', -100) ,
+   ('2011-4-1','f', 100),
+ ('2011-4-5','g', 100),
+  ('2011-4-6','h', 100), 
+  ('2011-4-28','i', 100) 
+  ('2011-4-28','j', 100) ;
+
+#1
+
+SELECT DAY(date) as day , (SELECT SUM(score) FROM qlue.assessments WHERE score>0 ) as positif, 
+(SELECT SUM(score) FROM qlue.assessments WHERE score<0) as negatif  from qlue.assessments GROUP BY day;
